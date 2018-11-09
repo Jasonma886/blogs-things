@@ -1,0 +1,61 @@
+<template>
+  <div class="user-list">
+    <Table :columns="columns" :data="userList"></Table>
+    <Page :total="total" :current="curPage"
+          :show-total="true" @on-change="changePage"></Page>
+  </div>
+</template>
+
+<script>
+import {axiosHttp} from '@/plugins/axiosHttp'
+
+export default {
+  name: 'UserList',
+  data () {
+    return {
+      userList: [],
+      total: 0,
+      curPage: 1,
+      columns: [{
+        key: 'user_name',
+        title: '用户名'
+      }, {
+        key: 'user_age',
+        title: '年龄'
+      }, {
+        key: 'create_date',
+        title: '创建日期'
+      }, {
+        key: 'last_login',
+        title: '上次登录'
+      }]
+    }
+  },
+  created () {
+    this.getList()
+  },
+  methods: {
+    getList () {
+      axiosHttp({
+        api: '/api/userList',
+        type: 'get',
+        params: {
+          page: this.curPage,
+          size: 10
+        }
+      }).then(res => {
+        this.userList = res.data
+        this.total = res.total
+      })
+    },
+    changePage (next) {
+      this.curPage = next
+      this.getList()
+    }
+  }
+}
+</script>
+
+<style lang="" scoped>
+
+</style>
