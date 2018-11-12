@@ -22,6 +22,7 @@ export default {
     }
     .contain {
       width: 85%;
+      margin-top: 15px;
       margin-left: 10px;
     }
   }

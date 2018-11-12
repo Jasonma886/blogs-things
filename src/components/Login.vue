@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import {toLogin} from 'api/fetch'
 
 export default {
   name: 'Login',
@@ -40,15 +40,15 @@ export default {
         userName: this.formData.user,
         password: this.formData.password
       }
-      axios.get('/api/login', {params}).then(res => {
-        if (res.data.code === 0) {
+      toLogin(params).then(res => {
+        if (res.code === 0) {
           this.$Notice.success({
-            title: res.data.message
+            title: res.message
           })
-          this.$router.push('UserList')
+          this.$router.push('Main')
         } else {
           this.$Notice.error({
-            title: res.data.message
+            title: res.message
           })
         }
       })

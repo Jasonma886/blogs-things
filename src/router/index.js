@@ -6,7 +6,9 @@ import Websites from '@/components/Websites'
 import Main from '@/components/Main'
 import Left from '@/common/Left'
 import Head from '@/common/Head'
-import CommitBlog from '@/components/CommitBlog'
+import CommitBlog from 'components/Blogs/CommitBlog'
+import ManageBlog from 'components/Blogs/ManageBlog'
+import Blog from 'components/Blogs/Blog'
 
 Vue.use(Router)
 
@@ -20,10 +22,10 @@ export default new Router({
     },
     {
       path: '/Main',
-      name: 'Main',
+      // name: 'Main',
       components: {default: Main, head: Head},
       children: [
-        {path: '/', name: 'UserList', components: {default: UserList, left: Left}},
+        {path: '/', name: '', components: {default: UserList, left: Left}},
         {
           path: 'UserList',
           name: 'UserList',
@@ -38,6 +40,15 @@ export default new Router({
           path: 'post',
           name: 'post',
           components: {default: CommitBlog, left: Left}
+        }, {
+          path: 'Blog/:id',
+          name: 'Blog',
+          components: {default: Blog, left: Left}
+        },
+        {
+          path: 'ManageBlog',
+          name: 'ManageBlog',
+          components: {default: ManageBlog, left: Left}
         }
       ]
     }

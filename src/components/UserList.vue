@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import {axiosHttp} from '@/plugins/axiosHttp'
+import {getUsersList} from 'api/fetch'
 
 export default {
   name: 'UserList',
@@ -23,7 +23,7 @@ export default {
         key: 'user_age',
         title: '年龄'
       }, {
-        key: 'create_date',
+        key: 'createTime',
         title: '创建日期'
       }, {
         key: 'last_login',
@@ -36,13 +36,9 @@ export default {
   },
   methods: {
     getList () {
-      axiosHttp({
-        api: '/api/userList',
-        type: 'get',
-        params: {
-          page: this.curPage,
-          size: 10
-        }
+      getUsersList({
+        page: this.curPage,
+        size: 10
       }).then(res => {
         this.userList = res.data
         this.total = res.total

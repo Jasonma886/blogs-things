@@ -5,10 +5,11 @@
         <Icon type="ios-paper" />
         内容管理
       </template>
-      <MenuItem name="1-1">文章管理</MenuItem>
+      <MenuItem name="1-1" to="/Main/ManageBlog">文章管理</MenuItem>
       <MenuItem name="1-2">评论管理</MenuItem>
       <MenuItem name="1-3">举报管理</MenuItem>
       <MenuItem name="1-4" to="/Main/Websites">网站管理</MenuItem>
+      <MenuItem name="1-5" to="/Main/post">添加文章</MenuItem>
     </Submenu>
     <Submenu name="2">
       <template slot="title">
