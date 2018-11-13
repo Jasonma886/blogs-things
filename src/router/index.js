@@ -9,6 +9,8 @@ import Head from '@/common/Head'
 import CommitBlog from 'components/Blogs/CommitBlog'
 import ManageBlog from 'components/Blogs/ManageBlog'
 import Blog from 'components/Blogs/Blog'
+import BlogsAna from 'components/analysic/BlogsAna'
+
 
 Vue.use(Router)
 
@@ -31,25 +33,11 @@ export default new Router({
           name: 'UserList',
           components: {default: UserList, left: Left}
         },
-        {
-          path: 'Websites',
-          name: 'Websites',
-          components: {default: Websites, left: Left}
-        },
-        {
-          path: 'post',
-          name: 'post',
-          components: {default: CommitBlog, left: Left}
-        }, {
-          path: 'Blog/:id',
-          name: 'Blog',
-          components: {default: Blog, left: Left}
-        },
-        {
-          path: 'ManageBlog',
-          name: 'ManageBlog',
-          components: {default: ManageBlog, left: Left}
-        }
+        {path: 'Websites', name: 'Websites', components: {default: Websites, left: Left}},
+        {path: 'post', name: 'post', components: {default: CommitBlog, left: Left}},
+        {path: 'Blog/:id', name: 'Blog', components: {default: Blog, left: Left}},
+        {path: 'ManageBlog', name: 'ManageBlog', components: {default: ManageBlog, left: Left}},
+        {path: 'BlogsAna', name: 'BlogsAna', components: {default: BlogsAna, left: Left}}
       ]
     }
   ]

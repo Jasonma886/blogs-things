@@ -52,6 +52,8 @@ export default {
 }
 </script>
 
-<style lang="" scoped>
-
+<style lang="less" scoped>
+.user-list {
+  width: 98%;
+}
 </style>

@@ -5,6 +5,10 @@
         <Input type="text" v-model="formData.title" placeholder="the title of blog">
         </Input>
       </FormItem>
+      <FormItem prop="subTitle" label="文章副标题">
+        <Input type="text" v-model="formData.subTitle" placeholder="the subTitle of blog">
+        </Input>
+      </FormItem>
       <FormItem prop="origin" label="原文链接">
         <Input type="text" v-model="formData.origin" placeholder="the link of blog">
         </Input>
@@ -14,8 +18,12 @@
         </Input>
       </FormItem>
       <FormItem prop="about" label="文章类别">
-        <Input type="text" v-model="formData.about" placeholder="the type of blog">
-        </Input>
+        <RadioGroup v-model="formData.about" type="button">
+          <Radio label="javascript"></Radio>
+          <Radio label="node"></Radio>
+          <Radio label="linux"></Radio>
+          <Radio label="others"></Radio>
+        </RadioGroup>
       </FormItem>
       <FormItem prop="content" label="文章内容">
         <Input type="textarea" v-model="formData.content" :rows="20" placeholder="the content of blog">
@@ -29,7 +37,7 @@
 </template>
 
 <script>
-import {axiosHttp} from '@/plugins/axiosHttp'
+import {commitBlog} from '@/api/fetch'
 
 export default {
   name: 'CommitBlog',
@@ -37,22 +45,23 @@ export default {
     return {
       formData: {
         author: '',
+        subTitle: '',
         content: '',
         title: '',
         origin: '',
-        about: ''
+        about: 'javascript'
       }
     }
   },
   methods: {
     handleSubmit () {
-      axiosHttp({
-        api: '/api/commitBlog',
-        type: 'post',
-        params: this.formData
-      }).then(res => {
+      commitBlog(this.formData).then(res => {
         if (res.code === 0) {
           this.$Notice.success({
+            title: res.message
+          })
+        } else {
+          this.$Notice.warning({
             title: res.message
           })
         }
@@ -62,6 +71,6 @@ export default {
 }
 </script>
 
-<style lang="" scoped>
+<style lang="less" scoped>
 
 </style>

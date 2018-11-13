@@ -39,3 +39,11 @@ export let getBlogById = (params) => {
     params
   })
 }
+
+export let checkLogin = (params) => {
+  return axiosHttp({
+    api: '/api/checkLogin',
+    type: 'get',
+    params
+  })
+}

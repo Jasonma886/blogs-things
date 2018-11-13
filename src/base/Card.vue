@@ -2,8 +2,8 @@
   <div class="card">
     <a @click="readDetail" class="title">{{title}}</a>
     <p class="content">{{content}}</p>
-    <i>{{author}}</i>
-    <i>{{commitTime}}</i>
+    <i class="tips"><Icon type="ios-contact" /> {{author}}</i>
+    <i class="tips"><Icon type="ios-calendar-outline" /> {{commitTime}}</i>
   </div>
 </template>
 
@@ -45,7 +45,10 @@ export default {
     line-height: 1.5;
   }
   .content {
-
+    margin-bottom: 10px;
+  }
+  .tips {
+    margin-right: 6px;
   }
 }
 </style>

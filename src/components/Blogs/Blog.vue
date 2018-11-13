@@ -1,6 +1,7 @@
 <template>
   <div class="blog">
     <h2 class="title">{{content.title}}</h2>
+    <p>查看原文：点击<a :href="content.origin" target="_blank">这里</a></p>
     <p class="content" v-html="formatCode(content.content)"></p>
   </div>
 </template>
@@ -25,7 +26,7 @@ export default {
   },
   methods: {
     formatCode (code = '') {
-      return code.replace(/\n/g, '<br>').replace(/\s{1}/g, '&nbsp;')
+      return code.replace(/\n/g, '<br>')
     }
   }
 }
@@ -50,6 +51,7 @@ export default {
     font-size: 16px;
     font-weight: 400;
     line-height: 1.7;
+    white-space: pre-wrap;
   }
 }
 </style>
