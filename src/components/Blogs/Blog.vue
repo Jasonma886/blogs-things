@@ -3,6 +3,7 @@
     <h2 class="title">{{content.title}}</h2>
     <p>查看原文：点击<a :href="content.origin" target="_blank">这里</a></p>
     <p class="content" v-html="formatCode(content.content)"></p>
+    <BackTop></BackTop>
   </div>
 </template>
 

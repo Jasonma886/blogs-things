@@ -15,7 +15,9 @@ import {
   MenuGroup,
   Page,
   RadioGroup,
-  Radio
+  Radio,
+  BackTop,
+  Modal
 } from 'iview'
 
 export default function () {
@@ -34,5 +36,7 @@ export default function () {
   Vue.component('Page', Page)
   Vue.component('RadioGroup', RadioGroup)
   Vue.component('Radio', Radio)
+  Vue.component('BackTop', BackTop)
+  Vue.component('Modal', Modal)
   Vue.prototype.$Notice = Notice
 }

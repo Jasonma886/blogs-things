@@ -10,13 +10,14 @@ import CommitBlog from 'components/Blogs/CommitBlog'
 import ManageBlog from 'components/Blogs/ManageBlog'
 import Blog from 'components/Blogs/Blog'
 import BlogsAna from 'components/analysic/BlogsAna'
-
+import Share from 'components/analysic/share'
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   routes: [
+    {path: '/', redirect: '/Main/UserList'},
     {
       path: '/Login',
       name: 'Login',
@@ -37,8 +38,10 @@ export default new Router({
         {path: 'post', name: 'post', components: {default: CommitBlog, left: Left}},
         {path: 'Blog/:id', name: 'Blog', components: {default: Blog, left: Left}},
         {path: 'ManageBlog', name: 'ManageBlog', components: {default: ManageBlog, left: Left}},
-        {path: 'BlogsAna', name: 'BlogsAna', components: {default: BlogsAna, left: Left}}
+        {path: 'BlogsAna', name: 'BlogsAna', components: {default: BlogsAna, left: Left}},
+        {path: 'Share', name: 'Share', components: {default: Share, left: Left}}
       ]
-    }
+    },
+    {path: '*', redirect: '/Main/UserList'}
   ]
 })

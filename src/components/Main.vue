@@ -18,12 +18,15 @@ export default {
 <style lang="less" scoped>
   .main {
     display: flex;
+    width: 85%;
+    margin: 80px auto 100px;
+    min-height: 80vh;
+    background-color: #fff;
     .left-part {
     }
     .contain {
       width: 85%;
-      margin-top: 15px;
-      margin-left: 10px;
+      padding: 20px;
     }
   }
 </style>

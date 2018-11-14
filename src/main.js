@@ -3,7 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-// import iView from 'iview'
+import store from './store'
+import 'reset-css/reset.css'
 import 'iview/dist/styles/iview.css'
 import importIview from './iComponents'
 
@@ -14,6 +15,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

@@ -42,6 +42,7 @@ export default {
       }
       toLogin(params).then(res => {
         if (res.code === 0) {
+          this.$store.commit('setStatus', true)
           this.$Notice.success({
             title: res.message
           })

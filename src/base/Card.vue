@@ -4,6 +4,7 @@
     <p class="content">{{content}}</p>
     <i class="tips"><Icon type="ios-contact" /> {{author}}</i>
     <i class="tips"><Icon type="ios-calendar-outline" /> {{commitTime}}</i>
+    <i class="tips"><Icon type="ios-eye" /> {{clicked}}</i>
   </div>
 </template>
 
@@ -22,6 +23,10 @@ export default {
     },
     commitTime: {
       type: String
+    },
+    clicked: {
+      type: Number,
+      default: 0
     }
   },
   methods: {
