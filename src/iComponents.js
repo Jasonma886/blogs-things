@@ -17,7 +17,9 @@ import {
   RadioGroup,
   Radio,
   BackTop,
-  Modal
+  Modal,
+  Divider,
+  Message
 } from 'iview'
 
 export default function () {
@@ -38,5 +40,7 @@ export default function () {
   Vue.component('Radio', Radio)
   Vue.component('BackTop', BackTop)
   Vue.component('Modal', Modal)
+  Vue.component('Divider', Divider)
   Vue.prototype.$Notice = Notice
+  Vue.prototype.$Message = Message
 }

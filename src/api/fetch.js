@@ -56,6 +56,24 @@ export let logout = (params) => {
   })
 }
 
+// 添加评论
+export let addComment = (params) => {
+  return axiosHttp({
+    api: '/api/comment/addComment',
+    type: 'post',
+    params
+  })
+}
+
+// 获取评论
+export let getComments = (params) => {
+  return axiosHttp({
+    api: '/api/comment/getComments',
+    type: 'get',
+    params
+  })
+}
+
 export let getGFInfo = (params) => {
   return axiosHttp({
     api: '/gf/api/stockspriteinterface/2.0.0/timeline',
