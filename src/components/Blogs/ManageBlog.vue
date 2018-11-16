@@ -8,7 +8,7 @@
     <template v-for="(item, key) in blogsList">
       <Card :title="item.title" :content="item.content"
             :commit-time="item.commitTime" :author="item.author"
-            :clicked="item.clicked"
+            :clicked="item.clicked" :comments="item.count"
             @click='goInto(item.blogId)' :key="key"></Card>
     </template>
   </div>

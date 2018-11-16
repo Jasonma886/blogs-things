@@ -40,6 +40,22 @@ export let getBlogById = (params) => {
   })
 }
 
+export let likedBlogById = (params) => {
+  return axiosHttp({
+    api: '/api/blog/likedBlog',
+    type: 'post',
+    params
+  })
+}
+
+export let dislikedBlogById = (params) => {
+  return axiosHttp({
+    api: '/api/blog/dislikedBlog',
+    type: 'delete',
+    params
+  })
+}
+
 export let checkLogin = (params) => {
   return axiosHttp({
     api: '/api/user/checkLogin',

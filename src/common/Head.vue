@@ -30,7 +30,7 @@
       </MenuItem>
       <MenuItem name="5">
         <template v-if="$store.state.isLogin">
-          <span>{{'欢迎您, Jason'}}</span>
+          <span>欢迎您, {{$store.state.userName}}</span>
           <Button @click="logout">Logout</Button>
         </template>
         <template v-else>

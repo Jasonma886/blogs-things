@@ -5,6 +5,7 @@
     <i class="tips"><Icon type="ios-contact" /> {{author}}</i>
     <i class="tips"><Icon type="ios-calendar-outline" /> {{commitTime}}</i>
     <i class="tips"><Icon type="ios-eye" /> {{clicked}}</i>
+    <i class="tips"><Icon type="ios-chatboxes" /> {{comments || 0}}</i>
   </div>
 </template>
 
@@ -25,6 +26,10 @@ export default {
       type: String
     },
     clicked: {
+      type: Number,
+      default: 0
+    },
+    comments: {
       type: Number,
       default: 0
     }
@@ -53,7 +58,7 @@ export default {
     margin-bottom: 10px;
   }
   .tips {
-    margin-right: 6px;
+    margin-right: 8px;
   }
 }
 </style>

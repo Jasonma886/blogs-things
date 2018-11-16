@@ -1,7 +1,14 @@
 <template>
   <div class="blog">
     <h2 class="title">{{content.title}}</h2>
-    <p>查看原文：点击<a :href="content.origin" target="_blank">这里</a></p>
+    <div class="actions">
+      <span class="tips"><Icon type="ios-contact" /> {{content.author}}</span>
+      <span class="tips"><Icon type="ios-calendar-outline" /> {{content.commitTime}}</span>
+      <span class="tips">查看原文：点击<a :href="content.origin" target="_blank">这里</a></span>
+      <span class="tips"><Icon type="ios-eye" /> {{content.clicked}}</span>
+      <span class="tips pointer" v-if="!content.liked" @click="likedBlog">收藏<Icon type="ios-heart-outline" /></span>
+      <span class="tips pointer" v-else @click="dislikedBlog">取消收藏<Icon type="ios-heart" color="red" /></span>
+    </div>
     <p class="content" v-html="formatCode(content.content)"></p>
     <Comment></Comment>
     <BackTop></BackTop>
@@ -9,7 +16,7 @@
 </template>
 
 <script>
-import {getBlogById} from '@/api/fetch'
+import {getBlogById, likedBlogById, dislikedBlogById} from '@/api/fetch'
 import Comment from './Comment'
 
 export default {
@@ -33,6 +40,24 @@ export default {
   methods: {
     formatCode (code = '') {
       return code.replace(/\n/g, '<br>')
+    },
+    likedBlog () {
+      let id = this.$route.params.id || 1
+      likedBlogById({blogId: id}).then(res => {
+        if (res.code === 0) {
+          this.content.liked = 1
+        }
+        this.$Message.info(res.message)
+      })
+    },
+    dislikedBlog () {
+      let id = this.$route.params.id || 1
+      dislikedBlogById({blogId: id}).then(res => {
+        if (res.code === 0) {
+          this.content.liked = null
+        }
+        this.$Message.info(res.message)
+      })
     }
   },
   beforeRouteEnter (to, from, next) {
@@ -55,6 +80,17 @@ export default {
       font-size: 34px;
       font-weight: 700;
       line-height: 1.3;
+    }
+    .actions {
+      text-align: right;
+      font-size: 14px;
+      margin: 10px;
+      .tips {
+        margin-left: 8px;
+      }
+      .pointer {
+        cursor: pointer;
+      }
     }
     .content {
       color: #2f2f2f;

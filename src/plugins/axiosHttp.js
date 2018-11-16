@@ -8,6 +8,12 @@ export let axiosHttp = ({api, params, type}) => {
       }, error => {
         reject(error)
       })
+    } else if (type === 'delete') {
+      axios.delete(api, {params}).then(res => {
+        resolve(res.data)
+      }, error => {
+        reject(error)
+      })
     } else {
       axios.post(api, params).then(res => {
         resolve(res.data)

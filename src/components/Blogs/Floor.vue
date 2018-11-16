@@ -6,8 +6,11 @@
       </div>
       <div class="info">
         <a href="">{{list.fromUser}}</a>
+        <template v-if="list.toUser">
+          <span>回复：<a href="">@{{list.toUser}}</a></span>
+        </template>
         <div class="meta">
-          <span>1楼-{{list.time}}</span>
+          <span>{{list.i}}楼-{{list.time}}</span>
         </div>
       </div>
     </div>
@@ -27,10 +30,10 @@
     </div>
     <Divider></Divider>
     <Modal v-model="showReply" draggable scrollable @on-ok="sendReply">
-      <div slot="header">回复<span style="color: dodgerblue">jason</span></div>
-      <Form :model="formData">
-        <FormItem prop="user">
-          <Input type="textarea" v-model="formData.user" placeholder="Username">
+      <div slot="header">回复<span style="color: dodgerblue">{{list.fromUser}}</span></div>
+      <Form>
+        <FormItem>
+          <Input type="textarea" v-model="content" placeholder="Username">
           <Icon type="ios-person-outline" slot="prepend"></Icon>
           </Input>
         </FormItem>
@@ -54,7 +57,7 @@ export default {
     return {
       isLiked: false,
       showReply: false,
-      formData: {}
+      content: ''
     }
   },
   methods: {
@@ -66,11 +69,18 @@ export default {
     },
     sendReply () {
       let params = {
-        from: 'jason',
+        from: this.$store.state.userName,
+        to: this.list.fromUser,
         blogId: 1,
-        content: '沙发'
+        content: this.content
       }
-      addComment(params)
+      addComment(params).then(res => {
+        if (res.code === 0) {
+          this.$emit('updated')
+        } else {
+          this.$Message.warning(res.message)
+        }
+      })
     }
   }
 }
