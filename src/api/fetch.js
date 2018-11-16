@@ -8,6 +8,14 @@ export let getBlogsList = (params) => {
   })
 }
 
+export let getCollections = (params) => {
+  return axiosHttp({
+    api: '/api/blog/getCollections',
+    type: 'get',
+    params
+  })
+}
+
 export let toLogin = (params) => {
   return axiosHttp({
     api: '/api/user/login',
