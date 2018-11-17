@@ -96,10 +96,12 @@ export default {
       }
       toLogin(params).then(res => {
         if (res.code === 0) {
+          let {lastLogin, loginTimes} = res.data
           this.$store.commit('setStatus', true)
           this.$store.commit('setUserName', this.formData.user)
           this.$Notice.success({
-            title: res.message
+            title: res.message,
+            desc: `已经登录${loginTimes}次<br/>上次登录时间：${lastLogin}`
           })
         } else {
           this.$Notice.error({

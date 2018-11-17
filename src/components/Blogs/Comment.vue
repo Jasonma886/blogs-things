@@ -45,6 +45,7 @@ export default {
       addComment(params).then(res => {
         if (res.code === 0) {
           this.$Message.info(res.message)
+          this.content = ''
           this.getCommentsList()
         } else {
           this.$Message.warning(res.message)

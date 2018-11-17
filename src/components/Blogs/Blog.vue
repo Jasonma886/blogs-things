@@ -6,8 +6,8 @@
       <span class="tips"><Icon type="ios-calendar-outline" /> {{content.commitTime}}</span>
       <span class="tips">查看原文：点击<a :href="content.origin" target="_blank">这里</a></span>
       <span class="tips"><Icon type="ios-eye" /> {{content.clicked}}</span>
-      <span class="tips pointer" v-if="!content.liked" @click="likedBlog">收藏<Icon type="ios-heart-outline" /></span>
-      <span class="tips pointer" v-else @click="dislikedBlog">取消收藏<Icon type="ios-heart" color="red" /></span>
+      <span class="tips pointer" v-if="!content.liked" @click="likedBlog"><Icon type="ios-heart-outline" /></span>
+      <span class="tips pointer showing" v-else @click="dislikedBlog"><Icon type="ios-heart" color="red" /></span>
     </div>
     <p class="content" v-html="formatCode(content.content)"></p>
     <Comment></Comment>
@@ -69,6 +69,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  @keyframes give {
+    from {
+      transform: scale(1.8) rotateZ(20deg);
+    }
+    to {
+      transform: scale(1) rotateZ(-20deg);
+    }
+  }
+
   .blog {
     text-align: left;
     width: 80%;
@@ -90,6 +99,11 @@ export default {
       }
       .pointer {
         cursor: pointer;
+      }
+      .showing {
+        display: inline-block;
+        transform: scale(1);
+        animation: give .6s;
       }
     }
     .content {

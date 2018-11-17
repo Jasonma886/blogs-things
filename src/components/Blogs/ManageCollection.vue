@@ -15,7 +15,8 @@ export default {
   name: 'ManageCollection',
   data () {
     return {
-      blogsList: []
+      blogsList: [],
+      curType: 'all'
     }
   },
   created () {
