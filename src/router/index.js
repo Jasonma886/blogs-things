@@ -10,8 +10,11 @@ import Left from '@/common/Left'
 import Head from '@/common/Head'
 import CommitBlog from 'components/Blogs/CommitBlog'
 import ManageBlog from 'components/Blogs/ManageBlog'
+import UpdateBlog from 'components/Blogs/UpdateBlog'
 import ManageCollection from 'components/Blogs/ManageCollection'
+import MyComments from 'components/MyComments'
 import Blog from 'components/Blogs/Blog'
+import MyNotes from 'components/Blogs/MyNotes'
 import BlogsAna from 'components/analysic/BlogsAna'
 import Share from 'components/analysic/share'
 
@@ -41,8 +44,11 @@ const router = new Router({
         {path: 'post', name: 'post', components: {default: CommitBlog, left: Left}},
         {path: 'Blog/:id', name: 'Blog', components: {default: Blog, left: Left}},
         {path: 'ManageBlog', name: 'ManageBlog', components: {default: ManageBlog, left: Left}},
+        {path: 'UpdateBlog/:id', name: 'UpdateBlog', components: {default: UpdateBlog, left: Left}},
         {path: 'ManageCollection', name: 'ManageCollection', components: {default: ManageCollection, left: Left}},
         {path: 'BlogsAna', name: 'BlogsAna', components: {default: BlogsAna, left: Left}},
+        {path: 'MyNotes', name: 'MyNotes', components: {default: MyNotes, left: Left}},
+        {path: 'MyComments', name: 'MyComments', components: {default: MyComments, left: Left}},
         {path: 'Share', name: 'Share', components: {default: Share, left: Left}}
       ]
     },

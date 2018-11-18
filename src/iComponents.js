@@ -19,6 +19,7 @@ import {
   BackTop,
   Modal,
   Divider,
+  Poptip,
   Message
 } from 'iview'
 
@@ -41,6 +42,7 @@ export default function () {
   Vue.component('BackTop', BackTop)
   Vue.component('Modal', Modal)
   Vue.component('Divider', Divider)
+  Vue.component('Poptip', Poptip)
   Vue.prototype.$Notice = Notice
   Vue.prototype.$Message = Message
 }

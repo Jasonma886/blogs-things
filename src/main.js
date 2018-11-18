@@ -5,7 +5,11 @@ import App from './App'
 import router from './router'
 import store from './store'
 import 'reset-css/reset.css'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
 import 'iview/dist/styles/iview.css'
+import './app.css'
 import importIview from './iComponents'
 
 importIview()

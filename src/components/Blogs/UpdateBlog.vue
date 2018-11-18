@@ -1,5 +1,5 @@
 <template>
-  <div class="commit-blog">
+  <div class="update-blog">
     <Form :model="formData" :label-width="100">
       <FormItem prop="title" label="文章标题">
         <Input type="text" v-model="formData.title" placeholder="the title of blog">
@@ -37,39 +37,49 @@
 </template>
 
 <script>
-import {commitBlog} from '@/api/fetch'
+import {updateBlog, getBlogById} from '@/api/fetch'
 import { quillEditor } from 'vue-quill-editor'
 
 export default {
-  name: 'CommitBlog',
+  name: 'UpdateBlog',
   data () {
     return {
       content: '',
       formData: {
         author: '',
         subTitle: '',
+        blogId: 1,
         content: '',
         title: '',
         origin: '',
         about: 'javascript'
       },
       editorOption: {
-        // modules: {
-        //   toolbar: '#toolbar'
-        // },
         formats: {},
         placeholder: 'Compose an epic...',
         readOnly: false,
-        theme: 'bubble'
+        theme: 'snow'
       }
     }
+  },
+  created () {
+    this.getDetails()
   },
   components: {
     quillEditor
   },
   methods: {
+    getDetails () {
+      let id = this.$route.params.id || 1
+      this.formData.blogId = id
+      getBlogById({blogId: id}).then(res => {
+        if (res.code === 0) {
+          this.formData = res.data
+        }
+      })
+    },
     handleSubmit () {
-      commitBlog(this.formData).then(res => {
+      updateBlog(this.formData).then(res => {
         if (res.code === 0) {
           this.$Notice.success({
             title: res.message
@@ -89,13 +99,8 @@ export default {
 
 </style>
 
-<style lang="less">
-  .commit-blog {
-    .ql-bubble {
-      border: 1px solid #dcdee2;
-    }
-    .quill-editor{
-      height: 350px;
-    }
+<style>
+  .update-blog .quill-editor{
+    height: 350px;
   }
 </style>

@@ -9,7 +9,7 @@
       <span class="tips pointer" v-if="!content.liked" @click="likedBlog"><Icon type="ios-heart-outline" /></span>
       <span class="tips pointer showing" v-else @click="dislikedBlog"><Icon type="ios-heart" color="red" /></span>
     </div>
-    <p class="content" v-html="formatCode(content.content)"></p>
+    <div class="content" v-html="content.content"></div>
     <Comment></Comment>
     <BackTop></BackTop>
   </div>

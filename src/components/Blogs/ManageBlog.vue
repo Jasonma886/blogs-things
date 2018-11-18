@@ -7,8 +7,10 @@
     </nav>
     <template v-for="(item, key) in blogsList">
       <Card :title="item.title" :content="item.content"
+            :blog-id="item.blogId" :show-tools="$store.state.isLogin"
             :commit-time="item.commitTime" :author="item.author"
             :clicked="item.clicked" :comments="item.count"
+            @update="getList(curType)"
             @click='goInto(item.blogId)' :key="key"></Card>
     </template>
   </div>

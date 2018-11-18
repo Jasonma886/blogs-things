@@ -40,10 +40,26 @@ export let commitBlog = (params) => {
   })
 }
 
+export let updateBlog = (params) => {
+  return axiosHttp({
+    api: '/api/blog/updateBlog',
+    type: 'post',
+    params
+  })
+}
+
 export let getBlogById = (params) => {
   return axiosHttp({
     api: '/api/blog/getBlogById',
     type: 'get',
+    params
+  })
+}
+
+export let deleteBlog = (params) => {
+  return axiosHttp({
+    api: '/api/blog/deleteBlog',
+    type: 'delete',
     params
   })
 }
@@ -93,6 +109,15 @@ export let addComment = (params) => {
 export let getComments = (params) => {
   return axiosHttp({
     api: '/api/comment/getComments',
+    type: 'get',
+    params
+  })
+}
+
+// 获取某用户评论
+export let getCommentsByUser = (params) => {
+  return axiosHttp({
+    api: '/api/comment/getCommentsByUser',
     type: 'get',
     params
   })
