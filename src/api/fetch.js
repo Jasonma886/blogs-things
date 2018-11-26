@@ -114,6 +114,15 @@ export let getComments = (params) => {
   })
 }
 
+// 根据ID删除评论
+export let deleteComment = (params) => {
+  return axiosHttp({
+    api: '/api/comment/deleteComment',
+    type: 'delete',
+    params
+  })
+}
+
 // 获取某用户评论
 export let getCommentsByUser = (params) => {
   return axiosHttp({

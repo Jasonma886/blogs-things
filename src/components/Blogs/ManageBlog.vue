@@ -13,6 +13,8 @@
             @update="getList(curType)"
             @click='goInto(item.blogId)' :key="key"></Card>
     </template>
+    <Page :total="total" :current="curPage"
+          :show-total="true" @on-change="changePage"></Page>
   </div>
 </template>
 
@@ -26,12 +28,15 @@ export default {
     return {
       blogsList: [],
       curType: 'all',
+      total: 0,
+      curPage: 1,
       typesList: [
         {name: '所有', key: 'all'},
         {name: 'javascript', key: 'javascript'},
         {name: 'node', key: 'node'},
         {name: 'linux', key: 'linux'},
-        {name: 'others', key: 'others'}
+        {name: 'others', key: 'others'},
+        {name: 'CSS', key: 'CSS'}
       ]
     }
   },
@@ -52,7 +57,8 @@ export default {
     },
     goInto (id) {
       this.$router.push(`/Main/Blog/${id}`)
-    }
+    },
+    changePage () {}
   }
 }
 </script>
